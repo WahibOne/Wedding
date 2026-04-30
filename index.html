@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariage de Wahib & Noor</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Librairie pour les confettis -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Fichier CSS personnalisé -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-paper text-gray-800 overflow-x-hidden">
+
+    <!-- OVERLAY POUR LE CLIC INITIAL (SUSPENSE) -->
+    <div id="curtain-overlay" class="fixed inset-0 z-[200] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-500 bg-black/10">
+        <p class="font-script text-5xl md:text-7xl text-white drop-shadow-lg animate-pulse text-center px-4">Tap for a surprise</p>
+    </div>
+
+    <!-- RIDEAUX DE THÉÂTRE -->
+    <div id="curtain-left" class="fixed top-0 left-0 w-1/2 h-full z-[100] transition-transform duration-[2000ms] ease-in-out flex justify-end overflow-hidden bg-curtain shadow-[10px_0_25px_rgba(0,0,0,0.5)]">
+        <div class="w-8 h-full bg-black/20"></div>
+    </div>
+    <div id="curtain-right" class="fixed top-0 right-0 w-1/2 h-full z-[100] transition-transform duration-[2000ms] ease-in-out flex justify-start overflow-hidden bg-curtain shadow-[-10px_0_25px_rgba(0,0,0,0.5)]">
+        <div class="w-8 h-full bg-black/20"></div>
+    </div>
+
+    <!-- MUSIQUE DE FOND ET BOUTON -->
+    <audio id="bg-music" src="musique.mp3" loop preload="auto"></audio>
+    <div class="fixed top-6 right-6 z-[150]">
+        <button id="music-btn" class="w-12 h-12 bg-white/80 backdrop-blur-sm border border-primary/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer primary-color opacity-70">
+            <!-- Icône Sound On -->
+            <svg id="icon-sound" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <!-- Icône Mute -->
+            <svg id="icon-mute" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Section 1 : Accueil avec photo 1 (Regard complice) -->
+    <section class="relative h-[65svh] md:h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="photo-1.jpg" alt="Wahib et Noor" class="absolute inset-0 w-full h-full object-cover object-top md:object-center opacity-60">
+            <!-- Léger voile blanc pour la lisibilité -->
+            <div class="absolute inset-0 bg-white/40"></div>
+        </div>
+        
+        <div class="relative z-10 flex flex-col items-center text-center px-4 pt-4 fade-in">
+            <h1 class="font-script text-6xl md:text-8xl mb-0 primary-color leading-none drop-shadow-sm">Wahib</h1>
+            <span class="font-script text-4xl md:text-5xl primary-color my-2 drop-shadow-sm">&</span>
+            <h1 class="font-script text-6xl md:text-8xl mb-6 primary-color leading-none drop-shadow-sm">Noor</h1>
+            <p class="font-display text-[10px] md:text-sm tracking-[0.15em] uppercase mb-10 primary-color drop-shadow-sm">vous invitent à célébrer leur mariage</p>
+        </div>
+
+        <div class="absolute bottom-12 left-0 right-0 flex justify-center fade-in delay-2">
+            <a href="#suite" id="scroll-btn" class="flex flex-col items-center animate-bounce cursor-pointer">
+                <p class="font-display text-[10px] tracking-[0.2em] uppercase mb-2 primary-color font-semibold">Défiler vers le bas</p>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C2018" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Section 2 : Date à gratter -->
+    <section id="suite" class="min-h-[60vh] flex flex-col items-center justify-center py-16 px-8 bg-paper">
+        <div class="text-center mb-12 fade-in">
+            <h2 class="font-script text-5xl md:text-6xl mb-4 primary-color">Le Grand Jour</h2>
+            <p class="font-body text-sm tracking-[0.15em] uppercase primary-color">Grattez pour découvrir la date</p>
+        </div>
+        
+        <div class="flex gap-6 md:gap-10 relative z-20">
+            <div class="relative flex flex-col items-center fade-in delay-1">
+                <div class="scratch-container relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-primary shadow-lg">
+                    <div class="absolute inset-0 flex items-center justify-center bg-white">
+                        <span class="font-display text-2xl md:text-3xl primary-color">22</span>
+                    </div>
+                    <canvas id="scratch-day" class="absolute inset-0 w-full h-full cursor-pointer"></canvas>
+                </div>
+            </div>
+            <div class="relative flex flex-col items-center fade-in delay-2">
+                <div class="scratch-container relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-primary shadow-lg">
+                    <div class="absolute inset-0 flex items-center justify-center bg-white">
+                        <span class="font-display text-2xl md:text-3xl primary-color">Oct</span>
+                    </div>
+                    <canvas id="scratch-month" class="absolute inset-0 w-full h-full cursor-pointer"></canvas>
+                </div>
+            </div>
+            <div class="relative flex flex-col items-center fade-in delay-3">
+                <div class="scratch-container relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-primary shadow-lg">
+                    <div class="absolute inset-0 flex items-center justify-center bg-white">
+                        <span class="font-display text-2xl md:text-3xl primary-color">2026</span>
+                    </div>
+                    <canvas id="scratch-year" class="absolute inset-0 w-full h-full cursor-pointer"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENEUR CACHÉ POUR BLOQUER LE DÉFILEMENT -->
+    <div id="locked-content" class="hidden">
+
+        <!-- Section Intermédiaire avec Photo 2 (Effet Parallax) -->
+        <section class="relative h-[60vh] md:h-[90vh] w-full flex items-center justify-center overflow-hidden fade-in">
+            <div class="absolute inset-0 w-full h-full bg-fixed bg-top bg-cover" style="background-image: url('photo-2.jpg');">
+                <div class="absolute inset-0 bg-black/20"></div>
+            </div>
+            <div class="relative z-10 text-center fade-in delay-2">
+                <h2 class="font-script text-5xl md:text-7xl text-white drop-shadow-md">Pour la vie...</h2>
+            </div>
+        </section>
+
+        <!-- Section 3 : Lieux et Événements -->
+        <section class="bg-white flex flex-col items-center justify-center py-20 px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-script text-5xl md:text-6xl mb-2 primary-color">Nos Événements</h2>
+            </div>
+
+            <!-- Ajout des illustrations dans les cartes -->
+            <div class="flex flex-col md:flex-row gap-12 max-w-5xl w-full justify-center">
+                
+                <!-- Carte Fiançailles PREMIUM -->
+                <div class="group relative text-center flex-1 p-10 md:p-12 bg-[#F9F7F2] shadow-[0_20px_50px_-15px_rgba(92,32,24,0.15)] transition-all duration-700 hover:-translate-y-2 flex flex-col items-center">
+                    <!-- Cadre intérieur élégant -->
+                    <div class="absolute inset-4 md:inset-5 border border-[#5C2018]/15 pointer-events-none transition-colors duration-700 group-hover:border-[#5C2018]/30"></div>
+                    
+                    <p class="font-body text-[10px] md:text-xs tracking-[0.25em] uppercase primary-color mb-8 opacity-80">Les Fiançailles auront lieu à</p>
+                    
+                    <!-- Image Hôtel Renaissance -->
+                    <img src="photo-3.png" alt="Hôtel Renaissance" class="relative z-10 w-full h-auto max-w-[220px] md:max-w-[280px] object-contain mb-10 mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    
+                    <h3 class="font-display text-3xl md:text-4xl mb-3 primary-color relative z-10">Hôtel Renaissance</h3>
+                    <p class="font-body text-[10px] md:text-xs tracking-[0.2em] uppercase primary-color mb-6 opacity-80">Tlemcen</p>
+                    
+                    <!-- Ligne séparatrice chic -->
+                    <div class="w-12 h-[1px] bg-[#5C2018]/30 mb-6"></div>
+                    
+                    <p class="font-display text-2xl md:text-3xl primary-color">1<sup>er</sup> Août 2026</p>
+                </div>
+
+                <!-- Carte Mariage PREMIUM -->
+                <div class="group relative text-center flex-1 p-10 md:p-12 bg-[#F9F7F2] shadow-[0_20px_50px_-15px_rgba(92,32,24,0.15)] transition-all duration-700 hover:-translate-y-2 flex flex-col items-center">
+                    <!-- Cadre intérieur élégant -->
+                    <div class="absolute inset-4 md:inset-5 border border-[#5C2018]/15 pointer-events-none transition-colors duration-700 group-hover:border-[#5C2018]/30"></div>
+                    
+                    <p class="font-body text-[10px] md:text-xs tracking-[0.25em] uppercase primary-color mb-8 opacity-80">Le Mariage sera célébré à</p>
+                    
+                    <!-- Image Hôtel Zianides -->
+                    <img src="photo-4.png" alt="Hôtel Zianides" class="relative z-10 w-full h-auto max-w-[220px] md:max-w-[280px] object-contain mb-10 mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    
+                    <h3 class="font-display text-3xl md:text-4xl mb-3 primary-color relative z-10">Hôtel Zianides</h3>
+                    <p class="font-body text-[10px] md:text-xs tracking-[0.2em] uppercase primary-color mb-6 opacity-80">Tlemcen</p>
+                    
+                    <!-- Ligne séparatrice chic -->
+                    <div class="w-12 h-[1px] bg-[#5C2018]/30 mb-6"></div>
+                    
+                    <p class="font-display text-2xl md:text-3xl primary-color">22 Octobre 2026</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4 : Compte à rebours -->
+        <section class="py-16 bg-paper flex flex-col items-center justify-center px-8">
+            <div class="text-center mb-10 fade-in">
+                <h2 class="font-script text-4xl md:text-5xl mb-2 primary-color">Compte à rebours</h2>
+                <p class="font-body text-sm tracking-[0.15em] uppercase primary-color mt-2">Jusqu'au grand oui</p>
+            </div>
+            <div class="flex gap-4 md:gap-8 fade-in delay-1">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                        <span id="cd-days" class="font-display text-2xl md:text-3xl primary-color">--</span>
+                    </div>
+                    <span class="font-body text-[10px] md:text-xs tracking-[0.15em] uppercase primary-color">Jours</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                        <span id="cd-hours" class="font-display text-2xl md:text-3xl primary-color">--</span>
+                    </div>
+                    <span class="font-body text-[10px] md:text-xs tracking-[0.15em] uppercase primary-color">Heures</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                        <span id="cd-minutes" class="font-display text-2xl md:text-3xl primary-color">--</span>
+                    </div>
+                    <span class="font-body text-[10px] md:text-xs tracking-[0.15em] uppercase primary-color">Min</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                        <span id="cd-seconds" class="font-display text-2xl md:text-3xl primary-color">--</span>
+                    </div>
+                    <span class="font-body text-[10px] md:text-xs tracking-[0.15em] uppercase primary-color">Sec</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5 : Remerciements (NOUVELLE SECTION) -->
+        <section class="py-12 lg:py-40 bg-white flex flex-col items-center justify-center px-8 text-center">
+            <div class="fade-in flex flex-col items-center">
+                <h2 class="font-script text-6xl md:text-7xl mb-6 primary-color drop-shadow-sm">Merci</h2>
+                <p class="font-body text-[11px] md:text-sm tracking-[0.15em] uppercase primary-color max-w-lg leading-loose mb-8">
+                    De vous joindre à nous pour ce jour spécial.<br>
+                    Votre présence est le plus beau cadeau que nous puissions recevoir.
+                </p>
+                <p class="font-script text-4xl md:text-5xl primary-color">Wahib & Noor</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Fichier JS personnalisé -->
+    <script src="script.js"></script>
+</body>
+</html>
