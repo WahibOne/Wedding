@@ -119,30 +119,35 @@ document.addEventListener("DOMContentLoaded", function() {
     /* ==========================================
        3. COMPTE À REBOURS (22 Octobre 2026)
        ========================================== */
-    const weddingDate = new Date("October 22, 2026 00:00:00").getTime();
+    // Définition des deux dates cibles
+const dateFiancailles = new Date("August 1, 2026 00:00:00").getTime();
+const dateMariage = new Date("October 22, 2026 00:00:00").getTime();
 
-    const countdown = setInterval(function() {
-        const now = new Date().getTime();
-        const distance = weddingDate - now;
+function mettreAJourComptesARebours() {
+    const maintenant = new Date().getTime();
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // --- Calcul pour les Fiançailles ---
+    const ecartFiancailles = dateFiancailles - maintenant;
+    if (ecartFiancailles > 0) {
+        document.getElementById("cd-f-days").innerText = Math.floor(ecartFiancailles / (1000 * 60 * 60 * 24));
+        document.getElementById("cd-f-hours").innerText = Math.floor((ecartFiancailles % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("cd-f-minutes").innerText = Math.floor((ecartFiancailles % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("cd-f-seconds").innerText = Math.floor((ecartFiancailles % (1000 * 60)) / 1000);
+    }
 
-        document.getElementById("cd-days").innerText = days < 10 ? "0" + days : days;
-        document.getElementById("cd-hours").innerText = hours < 10 ? "0" + hours : hours;
-        document.getElementById("cd-minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-        document.getElementById("cd-seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+    // --- Calcul pour le Mariage ---
+    const ecartMariage = dateMariage - maintenant;
+    if (ecartMariage > 0) {
+        document.getElementById("cd-m-days").innerText = Math.floor(ecartMariage / (1000 * 60 * 60 * 24));
+        document.getElementById("cd-m-hours").innerText = Math.floor((ecartMariage % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("cd-m-minutes").innerText = Math.floor((ecartMariage % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("cd-m-seconds").innerText = Math.floor((ecartMariage % (1000 * 60)) / 1000);
+    }
+}
 
-        if (distance < 0) {
-            clearInterval(countdown);
-            document.getElementById("cd-days").innerText = "00";
-            document.getElementById("cd-hours").innerText = "00";
-            document.getElementById("cd-minutes").innerText = "00";
-            document.getElementById("cd-seconds").innerText = "00";
-        }
-    }, 1000);
+// Lancer la fonction immédiatement, puis l'actualiser toutes les secondes
+mettreAJourComptesARebours();
+setInterval(mettreAJourComptesARebours, 1000);
 
     /* ==========================================
        4. EFFET CARTE À GRATTER & CONFETTIS

@@ -184,39 +184,76 @@
         </section>
 
         <!-- Section 4 : Compte à rebours -->
-        <section class="py-16 bg-paper flex flex-col items-center justify-center px-8">
-            <div class="text-center mb-10 fade-in">
-                <h2 class="font-script text-4xl md:text-5xl mb-2 primary-color">Compte à rebours</h2>
-                <p class="font-body text-sm tracking-[0.15em] uppercase primary-color mt-2">Jusqu'au grand oui</p>
+        <section class="py-16 bg-paper flex flex-col items-center justify-center px-4 md:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="font-script text-4xl md:text-5xl mb-2 primary-color">Patience...</h2>
+                <p class="font-body text-sm tracking-[0.15em] uppercase primary-color mt-2">Avant nos plus beaux jours</p>
             </div>
-            <div class="flex gap-4 md:gap-8 fade-in delay-1">
+
+            <div class="flex flex-col md:flex-row gap-16 md:gap-24 fade-in delay-1 w-full max-w-5xl justify-center">
+                
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
-                        <span id="cd-days" class="font-display text-2xl md:text-3xl primary-color">--</span>
+                    <h3 class="font-display text-xl md:text-2xl primary-color mb-6 uppercase tracking-[0.1em]">Les Fiançailles</h3>
+                    <div class="flex gap-3 md:gap-6">
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                                <span id="cd-f-days" class="font-display text-xl md:text-2xl primary-color">--</span>
+                            </div>
+                            <span class="font-body text-[9px] md:text-[10px] tracking-[0.15em] uppercase primary-color">Jours</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                                <span id="cd-f-hours" class="font-display text-xl md:text-2xl primary-color">--</span>
+                            </div>
+                            <span class="font-body text-[9px] md:text-[10px] tracking-[0.15em] uppercase primary-color">Heures</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                                <span id="cd-f-minutes" class="font-display text-xl md:text-2xl primary-color">--</span>
+                            </div>
+                            <span class="font-body text-[9px] md:text-[10px] tracking-[0.15em] uppercase primary-color">Min</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                                <span id="cd-f-seconds" class="font-display text-xl md:text-2xl primary-color">--</span>
+                            </div>
+                            <span class="font-body text-[9px] md:text-[10px] tracking-[0.15em] uppercase primary-color">Sec</span>
+                        </div>
                     </div>
-                    <span class="font-body text-[10px] md:text-xs tracking-[0.15em] uppercase primary-color">Jours</span>
                 </div>
+
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
-                        <span id="cd-hours" class="font-display text-2xl md:text-3xl primary-color">--</span>
+                    <h3 class="font-display text-xl md:text-2xl primary-color mb-6 uppercase tracking-[0.1em]">Le Mariage</h3>
+                    <div class="flex gap-3 md:gap-6">
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                                <span id="cd-m-days" class="font-display text-xl md:text-2xl primary-color">--</span>
+                            </div>
+                            <span class="font-body text-[9px] md:text-[10px] tracking-[0.15em] uppercase primary-color">Jours</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                                <span id="cd-m-hours" class="font-display text-xl md:text-2xl primary-color">--</span>
+                            </div>
+                            <span class="font-body text-[9px] md:text-[10px] tracking-[0.15em] uppercase primary-color">Heures</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                                <span id="cd-m-minutes" class="font-display text-xl md:text-2xl primary-color">--</span>
+                            </div>
+                            <span class="font-body text-[9px] md:text-[10px] tracking-[0.15em] uppercase primary-color">Min</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
+                                <span id="cd-m-seconds" class="font-display text-xl md:text-2xl primary-color">--</span>
+                            </div>
+                            <span class="font-body text-[9px] md:text-[10px] tracking-[0.15em] uppercase primary-color">Sec</span>
+                        </div>
                     </div>
-                    <span class="font-body text-[10px] md:text-xs tracking-[0.15em] uppercase primary-color">Heures</span>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
-                        <span id="cd-minutes" class="font-display text-2xl md:text-3xl primary-color">--</span>
-                    </div>
-                    <span class="font-body text-[10px] md:text-xs tracking-[0.15em] uppercase primary-color">Min</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-primary rounded-lg mb-2 bg-white shadow-sm">
-                        <span id="cd-seconds" class="font-display text-2xl md:text-3xl primary-color">--</span>
-                    </div>
-                    <span class="font-body text-[10px] md:text-xs tracking-[0.15em] uppercase primary-color">Sec</span>
-                </div>
+
             </div>
         </section>
-
         <!-- Section 5 : Remerciements (NOUVELLE SECTION) -->
         <section class="py-12 lg:py-40 bg-white flex flex-col items-center justify-center px-8 text-center">
             <div class="fade-in flex flex-col items-center">
@@ -225,8 +262,7 @@
                     De vous joindre à nous pour ce jour spécial.<br>
                     Votre présence est le plus beau cadeau que nous puissions recevoir.
                 </p>
-                <p class="font-script text-4xl md:text-5xl primary-color">Wahib & Noor</p>
-            </div>
+                <p class="font-script text-4xl md:text-5xl primary-color">Noor &nbsp;&nbsp;&nbsp;&nbsp; &amp; &nbsp;&nbsp;&nbsp;&nbsp; Wahib</p>            </div>
         </section>
 
     </div>
