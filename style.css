@@ -1,19 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
 
-.font-script { font-family: 'Great Vibes', cursive; }
-.font-display { font-family: 'Playfair Display', serif; }
-.font-body { font-family: 'Montserrat', sans-serif; }
+/* ==========================================
+   PALETTE (identique au menu : vert forêt & or, fond crème)
+   ========================================== */
+:root {
+    --vert: #1F4D3A;
+    --vert-profond: #173A2C;
+    --or: #8B5E16;
+    --or-clair: #B8924A;
+    --creme: #FBF6EA;
+    --creme-carte: #F7F0E0;
+}
 
-.primary-color { color: #5C2018; }
-.bg-primary { background-color: #5C2018; }
-.bg-paper { background-color: #f6efe8; } /* Remplace #FAF8F5 par #F9F7F2 */
-.border-primary { border-color: #5C2018; }
-.bg-curtain { background-color: #4a1a13; }
+/* --- Polices : Arizonia (script, comme "Noor & Wahib") + Crimson Pro (texte, comme le menu) --- */
+.font-script  { font-family: 'Arizonia', cursive; }
+.font-display { font-family: 'Crimson Pro', serif; }
+.font-body    { font-family: 'Crimson Pro', serif; font-weight: 500; }
+
+body { font-family: 'Crimson Pro', serif; }
+
+.primary-color { color: var(--vert); }
+.gold-color    { color: var(--or); }
+.bg-primary    { background-color: var(--vert); }
+.bg-paper      { background-color: var(--creme); }
+.border-primary { border-color: var(--vert); }
+.bg-curtain    { background-color: var(--vert-profond); }
+
+/* --- Ornement (ligne + losange doré, comme sur le menu) --- */
+.ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.ornament::before,
+.ornament::after {
+    content: "";
+    height: 1px;
+    width: 64px;
+    background: var(--or);
+}
+.ornament i {
+    display: block;
+    width: 7px;
+    height: 7px;
+    background: var(--or);
+    transform: rotate(45deg);
+}
+
+/* --- Illustrations vectorielles (lettrage + alliances) --- */
+.svg-art { display: block; height: auto; max-width: 100%; }
 
 .scratch-container canvas {
     user-select: none;
     -webkit-user-select: none;
-    touch-action: none; 
+    touch-action: none;
 }
 
 /* --- ANIMATIONS AU DÉFILEMENT --- */
@@ -32,9 +73,5 @@
 .delay-3 { transition-delay: 0.5s; }
 
 /* --- EFFET RIDEAU DE THÉÂTRE --- */
-.curtain-open-left {
-    transform: translateX(-100%);
-}
-.curtain-open-right {
-    transform: translateX(100%);
-}
+.curtain-open-left  { transform: translateX(-100%); }
+.curtain-open-right { transform: translateX(100%); }

@@ -119,35 +119,21 @@ document.addEventListener("DOMContentLoaded", function() {
     /* ==========================================
        3. COMPTE À REBOURS (22 Octobre 2026)
        ========================================== */
-    // Définition des deux dates cibles
-const dateFiancailles = new Date("August 1, 2026 00:00:00").getTime();
-const dateMariage = new Date("October 22, 2026 00:00:00").getTime();
+    const dateMariage = new Date("October 22, 2026 00:00:00").getTime();
 
-function mettreAJourComptesARebours() {
-    const maintenant = new Date().getTime();
+    function mettreAJourCompteARebours() {
+        const maintenant = new Date().getTime();
+        const ecart = Math.max(dateMariage - maintenant, 0);
 
-    // --- Calcul pour les Fiançailles ---
-    const ecartFiancailles = dateFiancailles - maintenant;
-    if (ecartFiancailles > 0) {
-        document.getElementById("cd-f-days").innerText = Math.floor(ecartFiancailles / (1000 * 60 * 60 * 24));
-        document.getElementById("cd-f-hours").innerText = Math.floor((ecartFiancailles % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById("cd-f-minutes").innerText = Math.floor((ecartFiancailles % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById("cd-f-seconds").innerText = Math.floor((ecartFiancailles % (1000 * 60)) / 1000);
+        document.getElementById("cd-m-days").innerText = Math.floor(ecart / (1000 * 60 * 60 * 24));
+        document.getElementById("cd-m-hours").innerText = Math.floor((ecart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("cd-m-minutes").innerText = Math.floor((ecart % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("cd-m-seconds").innerText = Math.floor((ecart % (1000 * 60)) / 1000);
     }
 
-    // --- Calcul pour le Mariage ---
-    const ecartMariage = dateMariage - maintenant;
-    if (ecartMariage > 0) {
-        document.getElementById("cd-m-days").innerText = Math.floor(ecartMariage / (1000 * 60 * 60 * 24));
-        document.getElementById("cd-m-hours").innerText = Math.floor((ecartMariage % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById("cd-m-minutes").innerText = Math.floor((ecartMariage % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById("cd-m-seconds").innerText = Math.floor((ecartMariage % (1000 * 60)) / 1000);
-    }
-}
-
-// Lancer la fonction immédiatement, puis l'actualiser toutes les secondes
-mettreAJourComptesARebours();
-setInterval(mettreAJourComptesARebours, 1000);
+    // Lancer la fonction immédiatement, puis l'actualiser toutes les secondes
+    mettreAJourCompteARebours();
+    setInterval(mettreAJourCompteARebours, 1000);
 
     /* ==========================================
        4. EFFET CARTE À GRATTER & CONFETTIS
@@ -165,10 +151,10 @@ setInterval(mettreAJourComptesARebours, 1000);
         canvas.width = canvas.parentElement.offsetWidth;
         canvas.height = canvas.parentElement.offsetHeight;
 
-        ctx.fillStyle = "#C0A080";
+        ctx.fillStyle = "#B8924A";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.font = "14px Montserrat";
+        ctx.font = "17px 'Crimson Pro', serif";
         ctx.fillStyle = "#ffffff";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -257,14 +243,14 @@ setInterval(mettreAJourComptesARebours, 1000);
                 angle: 60,
                 spread: 55,
                 origin: { x: 0 },
-                colors: ['#5C2018', '#C0A080', '#ffffff']
+                colors: ['#1F4D3A', '#B8924A', '#ffffff']
             });
             confetti({
                 particleCount: 5,
                 angle: 120,
                 spread: 55,
                 origin: { x: 1 },
-                colors: ['#5C2018', '#C0A080', '#ffffff']
+                colors: ['#1F4D3A', '#B8924A', '#ffffff']
             });
 
             if (Date.now() < end) {
